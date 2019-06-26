@@ -15,8 +15,9 @@ public class PlayerDAO {
 		List<Player> list = new ArrayList<>();
 
 		Connection con = null;
+		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?characterEncoding=UTF-8&serverTimezone=JST",
-				"root", "xxxxxxxxxxx");
+				"root", "xxxxxxxxxx");
 
 		PreparedStatement st = con.prepareStatement("select * from player inner join team on player.team_id = team.team_id where team.team_id=? and number=?");
 		st.setString(1, team);
