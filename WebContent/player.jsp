@@ -6,7 +6,6 @@
 	<% List<Player> list = (List<Player>) request.getAttribute("player_list"); %>
 
 	<% for (Player p : list) { %>
-	<p>チーム略称：<%=p.getTeam_id()%></p>
 	<p>背番号：<%=p.getNumber()%></p>
 	<p>チーム名：<%=p.getTeam_name()%></p>
 	<p>選手名：<%=p.getPlayer_name()%></p>

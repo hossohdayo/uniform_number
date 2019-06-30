@@ -17,7 +17,7 @@ public class PlayerDAO {
 		Connection con = null;
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?characterEncoding=UTF-8&serverTimezone=JST",
-				"root", "xxxxxxxxxx");
+				"root", "xxxxxxxxxxxxx");
 
 		PreparedStatement st = con.prepareStatement("select * from player inner join team on player.team_id = team.team_id where team.team_id=? and number=?");
 		st.setString(1, team);
@@ -26,7 +26,6 @@ public class PlayerDAO {
 
 		while (rs.next()) {
 			Player p = new Player();
-			p.setTeam_id(rs.getString("team_id"));
 			p.setNumber(rs.getString("number"));
 			p.setTeam_name(rs.getString("team_name"));
 			p.setPlayer_name(rs.getString("player_name"));
