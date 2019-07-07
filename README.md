@@ -9,3 +9,4 @@
 - Twitter:[@leonosippo](https://twitter.com/leonosippo)
 - Twitter:[@pro_spectator](https://twitter.com/pro_spectator)
 - Github:[hossohdayo](https://github.com/hossohdayo)
+- note:[Tomohiro Hosoda](https://note.mu/hossohdayo)
