@@ -1325,7 +1325,6 @@ insert into player values('H', '100', 'ハリーホーク', '', '', null, null, null, 
 insert into player values('H', '200', 'ハーキュリーホーク', '', '', null, null, null, '', null );
 insert into player values('E', '10', 'クラッチ', '', '', null, null, null, '', null );
 
-insert into player values('C', '！', 'スラィリー', '', '', null, null, null, '', null );
 insert into player values('De', '☆', 'DB.スターマン', '', '', null, null, null, '', null );
 insert into player values('B', '∞', 'ポンタ', '', '', null, null, null, '', null );
 insert into player values('M', '26', 'マリーンズファン', '', '', null, null, null, '', null );
@@ -1365,3 +1364,12 @@ insert into player values('F', '100', '大社　義規', '', '', null, null, '1915-02
 
 update player set number='99' where team_id='G' and number='009';
 update player set number='46' where team_id='H' and number='144';
+
+delete from player where team_id='C' and number='！';
+insert into player values('C', '!', 'スラィリー', '', '', null, null, null, '', null );
+
+
+update player set number='98' where team_id='C' and number='141';
+update player set number='93' where team_id='De' and number='104';
+insert into player values('T', '42', 'ソラーテ', '内野手', '右投両打', 180, 93, '1987-07-03', 'トーマス・アルバ・エディソン高－ヤンキース－パドレス－ブルージェイズ－ジャイアンツ－３Ａニューオリンズ－阪神', 1 );
+
