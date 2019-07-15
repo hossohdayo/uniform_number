@@ -24,16 +24,18 @@ public class SearchAction extends HttpServlet {
 		try {
 			String team = request.getParameter("team");
 			String number = request.getParameter("number");
-			Integer number_int = null;
 
 			//バリデーションをリストに格納する
 			List<String> error_list = new ArrayList<>();
 
 			if(isNum(number)) {
-				//searchメソッドのnumber引数はintなのでキャスト
-				number_int = Integer.parseInt(number);
+				//文字列のバリデーション
 			}else {
-				error_list.add("半角数字を入力してください。");
+				//マスコット対応、ポンタとスターマンが表示されない
+				if(number.equalsIgnoreCase("∞") || number.equals("!") || number.contentEquals("☆")) {
+				}else {
+					error_list.add("半角数字を入力してください。");
+				}
 			}
 
 			if(team == null) {
@@ -47,14 +49,6 @@ public class SearchAction extends HttpServlet {
 
 			PlayerDAO dao = new PlayerDAO();
 			List<Player> list = dao.search(team, number);
-
-//			if(list.size() == 0) {
-//				error_list.add("対象の選手はいませんでした。");
-//			}
-//			if(error_list.size() > 0){
-//				request.setAttribute("error", error_list);
-//				request.getRequestDispatcher("search.jsp").forward(request, response);
-//			}
 
 			request.setAttribute("player_list", list);
 

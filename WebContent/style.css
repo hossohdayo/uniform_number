@@ -8,6 +8,10 @@ h1{
 	text-align: center;
 }
 
+label, .radio:hover {
+	cursor: pointer;
+}
+
 .error{
 	color: red;
 }
@@ -27,9 +31,44 @@ li{
 
 .button_wrapper{
 	text-align: center;
+	margin: 14px 50px;
 }
 
 table{
 	margin-left:auto;
 	margin-right:auto;
+}
+
+.title {
+	margin: 20px 350px;
+}
+
+.inputBox {
+	width: 100px;
+	height: 30px;
+	border: solid;
+	border-radius: 24px;
+	border-color: skyblue;
+	padding: 0px 10px;
+}
+
+.inputBox:focus {
+	outline: none;
+}
+
+.btn {
+  font-size: 20px;
+  background: #5dca88;
+  box-shadow: 0px 1px #279C56;
+  border-radius: 3px;
+  color: white;
+}
+
+.btn:hover {
+  font-size: 20px;
+  background: #32CD32;
+  box-shadow: 0px 1px #279C56;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
 }
