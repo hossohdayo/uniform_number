@@ -1373,3 +1373,16 @@ update player set number='98' where team_id='C' and number='141';
 update player set number='93' where team_id='De' and number='104';
 insert into player values('T', '42', 'ソラーテ', '内野手', '右投両打', 180, 93, '1987-07-03', 'トーマス・アルバ・エディソン高－ヤンキース－パドレス－ブルージェイズ－ジャイアンツ－３Ａニューオリンズ－阪神', 1 );
 
+create table user (
+	name varchar(50) primary key, 
+	password varchar(20) not null
+);
+
+insert into user values('aaa', 'kkk');
+
+update player set team_id='B', number='96' where team_id='B' and number='124';
+update player set team_id='B', number='95' where team_id='B' and number='126';
+insert into player values('M', '79', 'マーティン', '外野手', '右投左打', 189, 91, '1988-03-06', 'マニュエル・ファハルド高－キューバ・ナランハス・デ・ビジャ・クララ－レンジャーズ－マリナーズ－カブス－タイガース－インディアンス－ロッテ', 1 );
+update player set team_id='G', number='95' where team_id='G' and number='013';
+update player set team_id='E', number='63' where team_id='E' and number='123';
+update player set team_id='E', number='68' where team_id='E' and number='056';
