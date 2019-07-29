@@ -48,7 +48,7 @@ public class PlayerDAO {
 
 	}
 
-	public boolean trade(String team1, String number1, String team2, String number2) throws Exception {
+	public boolean trade(String team1, String number1, String team2, String number2, String EndCareer1, String EndCareer2) throws Exception {
 
 		Connection con = null;
 		Class.forName("com.mysql.jdbc.Driver");
@@ -61,27 +61,30 @@ public class PlayerDAO {
 		String KariNumber = "99" + number1;
 
 		PreparedStatement st = con
-				.prepareStatement("update player set team_id=?, number=? where team_id=? and number=?");
+				.prepareStatement("update player set team_id=?, number=?, career=concat(career, ?) where team_id=? and number=?");
 		st.setString(1, team1);
 		st.setString(2, KariNumber);
-		st.setString(3, team2);
-		st.setString(4, number2);
+		st.setString(3, EndCareer1);
+		st.setString(4, team2);
+		st.setString(5, number2);
 		st.addBatch();
 
 		st.setString(1, team2);
 		st.setString(2, number2);
-		st.setString(3, team1);
-		st.setString(4, number1);
+		st.setString(3, EndCareer2);
+		st.setString(4, team1);
+		st.setString(5, number1);
 		st.addBatch();
 
 		st.setString(1, team1);
 		st.setString(2, number1);
-		st.setString(3, team1);
-		st.setString(4, KariNumber);
+		st.setString(3, "");
+		st.setString(4, team1);
+		st.setString(5, KariNumber);
 		st.addBatch();
 
 		int cnt[] = st.executeBatch();
-		if (cnt.length == 3) {
+		if (cnt[0] == 1 && cnt[1] == 1 && cnt[2] == 1) {
 			con.commit();
 			//オートコミットを有効にしておく
 			con.setAutoCommit(true);
@@ -122,6 +125,7 @@ public class PlayerDAO {
 			p.setTeam_id(rs.getString("team_id"));
 			p.setTeam_name(rs.getString("team_name"));
 			p.setPlayer_name(rs.getString("player_name"));
+			p.setCareer(rs.getString("career"));
 
 			list.add(p);
 		}

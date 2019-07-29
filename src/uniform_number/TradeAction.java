@@ -28,10 +28,17 @@ public class TradeAction extends HttpServlet {
 			String number1 = TradeList.get(0).getNumber();
 			String team2 = TradeList.get(1).getTeam_id();
 			String number2 = TradeList.get(1).getNumber();
+			String NewCareer1 = TradeList.get(0).getCareer();
+			String NewCareer2 = TradeList.get(1).getCareer();
+			int EndCareer1_num = NewCareer1.lastIndexOf("－");
+			int EndCareer2_num = NewCareer2.lastIndexOf("－");
+			String EndCareer1 = NewCareer1.substring(EndCareer1_num);
+			String EndCareer2 = NewCareer2.substring(EndCareer2_num);
 			String message;
 			//バリデーションをリストに格納する
 			List<String> error_list = new ArrayList<>();
 
+			//以下のバリデーションチェックいらない？
 			if(isNum(number1) && isNum(number2)) {
 				//文字列のバリデーション
 			}else {
@@ -53,7 +60,7 @@ public class TradeAction extends HttpServlet {
 			}
 
 			PlayerDAO dao = new PlayerDAO();
-			boolean flg = dao.trade(team1, number1, team2, number2);
+			boolean flg = dao.trade(team1, number1, team2, number2, EndCareer1, EndCareer2);
 
 			if(flg != true) {
 				message = "失敗しました";
@@ -64,7 +71,7 @@ public class TradeAction extends HttpServlet {
 				message = "完了しました";
 				session.removeAttribute("TradeList");
 				request.setAttribute("message", message);
-				request.getRequestDispatcher("comp.jsp").forward(request, response);
+				request.getRequestDispatcher("menu.jsp").forward(request, response);
 			}
 
 		} catch (Exception e) {

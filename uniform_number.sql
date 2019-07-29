@@ -1386,3 +1386,31 @@ insert into player values('M', '79', 'マーティン', '外野手', '右投左打', 189, 91
 update player set team_id='G', number='95' where team_id='G' and number='013';
 update player set team_id='E', number='63' where team_id='E' and number='123';
 update player set team_id='E', number='68' where team_id='E' and number='056';
+
+20190729変更
+update player set career=concat(career, '－阪神') where team_id='T' and number='30';
+update player set career=concat(career, '－ロッテ') where team_id='M' and number='58';
+update player set career=concat(career, '－巨人') where team_id='G' and number='47';
+update player set career=concat(career, '－巨人') where team_id='G' and number='32';
+update player set career=concat(career, '－日本ハム') where team_id='F' and number='56';
+update player set career=concat(career, '－日本ハム') where team_id='F' and number='30';
+update player set career=concat(career, '－中日') where team_id='D' and number='56';
+update player set career=concat(career, '－中日') where team_id='D' and number='38';
+update player set career=concat(career, '－オリックス') where team_id='B' and number='33';
+update player set career=concat(career, '－オリックス') where team_id='B' and number='56';
+update player set career=concat(career, '－オリックス') where team_id='B' and number='1';
+update player set career=concat(career, '－広島') where team_id='C' and number='35';
+update player set career=concat(career, '－楽天') where team_id='E' and number='46';
+update player set team_id='E', number='54' where team_id='G' and number='67';
+update player set team_id='G', number='67' where team_id='E' and number='60';
+update player set career=concat(career, '－巨人') where team_id='G' and number='67';
+update player set career=concat(career, '－楽天') where team_id='E' and number='54';
+
+insert into player values('L', '000', 'player1', '外野手', '右投左打', 189, 91, '1988-03-06', 'テスト高－テスト大－ライオンズ', 1 );
+insert into player values('L', '001', 'player2', '内野手', '右投左打', 189, 91, '1988-03-06', 'テスト高－テスト大－ライオンズ', 1 );
+insert into player values('H', '000', 'player3', '外野手', '右投左打', 189, 91, '1988-03-06', 'テスト高－テスト大－ソフトバンク', 1 );
+
+team1='H' team2='L' number1='000' number2='001' EndCareer1='－ソフトバンク' EndCareer2='－ライオンズ'
+update player set team_id='H', number='99000', career=concat(career, '－ソフトバンク') where team_id='L' and number='001'
+update player set team_id='L', number='001', career=concat(career, '－ライオンズ') where team_id='H' and number='000'
+update player set team_id='H', number='000', career=concat(career, '') where team_id='H' and number='99000'

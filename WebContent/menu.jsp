@@ -7,7 +7,6 @@
 <% if(user != null){ %>
 <p>ログイン成功</p>
 <p>こんにちは、<%=user %>さん</p>
-<% }else{ %>
 <% } %>
 <% String message = (String) request.getAttribute("message"); %>
 <% if(message != null){ %>
