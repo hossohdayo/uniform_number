@@ -34,6 +34,4 @@
 		<p class="error"><% out.println(error); %></p>
 		<% } %>
 	<% } %>
-<script src="script.js"></script>
-</body>
-</html>
+<%@ include file="./footer.html" %>

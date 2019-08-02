@@ -10,7 +10,10 @@ $(function() {
 		},
 		function() {
 			$(this).text('この背番号誰？');
+	});
 
+	$('.conf-show').click(function(){
+		$('#trade-modal').fadeIn();
 	});
 
 });

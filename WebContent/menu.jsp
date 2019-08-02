@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="bean.Player, java.util.List" %>
 <%@ include file="./header.html"%>
 <%@ include file="./title.jsp" %>
-<%@ page import="bean.Player, java.util.List" %>
 <% String user = (String) request.getParameter("user"); %>
 <% if(user != null){ %>
-<p>ログイン成功</p>
-<p>こんにちは、<%=user %>さん</p>
+	<p>ログイン成功</p>
+	<p>こんにちは、<%=user %>さん</p>
 <% } %>
 <% String message = (String) request.getAttribute("message"); %>
 <% if(message != null){ %>
-<p class="error"><%=message %></p>
+	<p class="error"><%=message %></p>
 <% } %>
 <% List<String> e_list = (List<String>) request.getAttribute("error"); %>
 <% if(e_list == null){ %>
 <% }else{ %>
 	<% for (Object error : e_list) { %>
-	<p class="error"><% out.println(error); %></p>
+		<p class="error"><% out.println(error); %></p>
 	<% } %>
 <% } %>
 <form action="conf" method="post">
@@ -69,28 +69,28 @@
 		</td>
 		</tr>
 	</table>
-	<input class="btn" type="submit" value="トレード">
+	<input class="btn conf-show" type="submit" value="トレード">
 </form>
 	<% List<Player> TradeList = (List<Player>) session.getAttribute("TradeList"); %>
 	<% if(TradeList != null){ %>
+<div class="trade-modal-wrapper" id="trade-modal">
+	<div class="modal">
 		<% for (Player p : TradeList) { %>
-		<p>チーム名：<%=p.getTeam_name()%>
-		背番号：<%=p.getNumber()%>
-		選手名：<%=p.getPlayer_name()%></p>
+			<p>チーム名：<%=p.getTeam_name()%>
+			背番号：<%=p.getNumber()%>
+			選手名：<%=p.getPlayer_name()%></p>
 		<% } %>
 		<p>以上の選手を入れ替えますか？</p>
-<form action="trade" method="post">
-	<input class="btn" type="submit" value="はい">
-</form>
-<form action="menu.jsp" method="post">
-	<% //session.removeAttribute("TradeList"); %>
-	<% //「いいえ」を押下したらセッションを破棄するようにしたい %>
-	<input class="btn" type="submit" value="いいえ">
-</form>
+		<form action="trade" method="post">
+			<input class="btn" type="submit" value="はい">
+		</form>
+		<form action="conf" method="post">
+			<input class="btn" type="submit" value="いいえ">
+		</form>
+	</div>
+</div>
 	<% } %>
-
 <form action="logout" method="post">
 	<input class="btn" type="submit" value="ログアウトする">
 </form>
-</body>
-</html>
+<%@ include file="./footer.html" %>

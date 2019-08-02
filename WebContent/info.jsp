@@ -5,5 +5,4 @@
 <%@ include file="./title.jsp" %>
 	<p>作成者:<a href="https://twitter.com/pro_spectator" target="_blank">@pro_spectator</a></p>
 	<p>誤字脱字、ご要望などありましたらDMください。</p>
-</body>
-</html>
+<%@ include file="./footer.html" %>

@@ -21,5 +21,4 @@
 		<p class="error"><% out.println(error); %></p>
 		<% } %>
 	<% } %>
-</body>
-</html>
+<%@ include file="./footer.html" %>

@@ -31,14 +31,18 @@ public class TradeConfAction extends HttpServlet {
 			//バリデーションをリストに格納する
 			List<String> error_list = new ArrayList<>();
 
-			if(isNum(number1) && isNum(number2)) {
+			if(team1 == null || team2 == null || number1 == null || number2 == null) {
+				error_list.add("キャンセルされました。");
+				request.setAttribute("error", error_list);
+				session.removeAttribute("TradeList");
+				request.getRequestDispatcher("menu.jsp").forward(request, response);
+				return ;
+			}else if(isNum(number1) && isNum(number2)) {
 				//文字列のバリデーション
-			}else {
+			}else if(number1.equalsIgnoreCase("∞") || number1.equals("!") || number1.contentEquals("☆")) {
 				//マスコット対応、ポンタとスターマンが表示されない
-				if(number1.equalsIgnoreCase("∞") || number1.equals("!") || number1.contentEquals("☆")) {
-				}else {
-					error_list.add("半角数字を入力してください。");
-				}
+			}else {
+				error_list.add("半角数字を入力してください。");
 			}
 
 			if(team1 == "" || team2 == "") {

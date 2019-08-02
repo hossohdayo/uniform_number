@@ -19,5 +19,4 @@
 	<% if(list.size() == 0){ %>
 	<p>対象の選手はいませんでした。</p>
 	<% } %>
-</body>
-</html>
+<%@ include file="./footer.html" %>
