@@ -71,6 +71,12 @@
 	</table>
 	<input class="btn conf-show" type="submit" value="トレード">
 </form>
+<form action="increment" method="post">
+	<input class="btn" type="submit" value="プロ年数＋1">
+</form>
+<form action="decrement" method="post">
+	<input class="btn" type="submit" value="プロ年数－1">
+</form>
 	<% List<Player> TradeList = (List<Player>) session.getAttribute("TradeList"); %>
 	<% if(TradeList != null){ %>
 <div class="trade-modal-wrapper" id="trade-modal">

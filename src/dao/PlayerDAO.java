@@ -137,4 +137,68 @@ public class PlayerDAO {
 
 	}
 
+	public boolean pro_year_increment() throws Exception {
+
+		Connection con = null;
+		Class.forName("com.mysql.jdbc.Driver");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?characterEncoding=UTF-8&serverTimezone=JST",
+				"root", "xxxxxxxx");
+
+		//update文のオートコミットを無効にする
+		con.setAutoCommit(false);
+
+		PreparedStatement st = con
+				.prepareStatement("update player set pro_year = pro_year + 1 where not ((team_id='G' and number in ('1', '3', '4', '14', '16', '34') or team_id='T' and number in ('10', '11', '23') or team_id='D' and number in ('10', '15') or team_id='C' and number in ('3', '8') or team_id='F' and number in ('100') or team_id='L' and number in ('24')) or career='')");
+
+		int line = st.executeUpdate();
+		if (line > 0) {
+			con.commit();
+			//オートコミットを有効にしておく
+			con.setAutoCommit(true);
+			st.close();
+			con.close();
+			return true;
+
+		} else {
+			con.rollback();
+			//オートコミットを有効にしておく
+			con.setAutoCommit(true);
+			st.close();
+			con.close();
+			return false;
+		}
+	}
+
+	public boolean pro_year_decrement() throws Exception {
+
+		Connection con = null;
+		Class.forName("com.mysql.jdbc.Driver");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?characterEncoding=UTF-8&serverTimezone=JST",
+				"root", "xxxxxxxx");
+
+		//update文のオートコミットを無効にする
+		con.setAutoCommit(false);
+
+		PreparedStatement st = con
+				.prepareStatement("update player set pro_year = pro_year - 1 where not ((team_id='G' and number in ('1', '3', '4', '14', '16', '34') or team_id='T' and number in ('10', '11', '23') or team_id='D' and number in ('10', '15') or team_id='C' and number in ('3', '8') or team_id='F' and number in ('100') or team_id='L' and number in ('24')) or career='')");
+
+		int line = st.executeUpdate();
+		if (line > 0) {
+			con.commit();
+			//オートコミットを有効にしておく
+			con.setAutoCommit(true);
+			st.close();
+			con.close();
+			return true;
+
+		} else {
+			con.rollback();
+			//オートコミットを有効にしておく
+			con.setAutoCommit(true);
+			st.close();
+			con.close();
+			return false;
+		}
+	}
+
 }
